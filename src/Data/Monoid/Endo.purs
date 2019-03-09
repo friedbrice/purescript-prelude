@@ -13,6 +13,9 @@ import Prelude
 -- | ```
 newtype Endo c a = Endo (c a a)
 
+getEndo :: forall a. Endo c a -> a
+getEndo (Endo f) = f
+
 derive newtype instance eqEndo :: Eq (c a a) => Eq (Endo c a)
 
 derive newtype instance ordEndo :: Ord (c a a) => Ord (Endo c a)
